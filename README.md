@@ -1,8 +1,6 @@
 # testeRestSouthSystem
 
-CRUD REST utilizando Spring Boot 2, Hibernate, JPA, e MySQL
-
-O projeto contêm uma API REST para um CRUD utilizando Spring Boot, Hibernate e JPA.
+O projeto é um desafio que visa desenvolver uma API REST para um CRUD utilizando Spring Boot, Hibernate e JPA.
 
 A API que será desenvolvida
 
