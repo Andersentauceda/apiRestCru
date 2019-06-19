@@ -2,6 +2,8 @@ package com.andersen.provaRestSouthSystem.controller;
 
 import com.andersen.provaRestSouthSystem.model.Conta;
 import com.andersen.provaRestSouthSystem.repository.ContaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +20,8 @@ public class ContaController {
     }
    
     @GetMapping
-    public List findAll(){
-        return repository.findAll();
+    public Page<Conta> findAll(Pageable pageable){
+        return repository.findAll(pageable);
     }
 
     @GetMapping(path = {"/{id}"})
@@ -47,11 +49,11 @@ public class ContaController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping(path ={"/{id}"})
-    public ResponseEntity<?> delete(@PathVariable long id) {
+    @PutMapping(path ={"/{id}"})
+    public ResponseEntity<?> update(@PathVariable long id) {
         return repository.findById(id)
                 .map(record -> {
-                    repository.setStatus(false);
+                    record.setStatus(false);
                     Conta updated = repository.save(record);
                     return ResponseEntity.ok().body(updated);
                 }).orElse(ResponseEntity.notFound().build());
