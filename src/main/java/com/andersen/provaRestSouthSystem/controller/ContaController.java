@@ -2,6 +2,7 @@ package com.andersen.provaRestSouthSystem.controller;
 
 import com.andersen.provaRestSouthSystem.model.Conta;
 import com.andersen.provaRestSouthSystem.repository.ContaRepository;
+import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping({"/contas"})
+@NoArgsConstructor
 public class ContaController {
 
     private ContaRepository repository;
@@ -49,8 +51,8 @@ public class ContaController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping(path ={"/{id}"})
-    public ResponseEntity<?> update(@PathVariable long id) {
+    @DeleteMapping(path ={"/{id}"})
+    public ResponseEntity<?> delete(@PathVariable long id) {
         return repository.findById(id)
                 .map(record -> {
                     record.setStatus(false);
