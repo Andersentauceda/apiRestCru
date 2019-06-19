@@ -1,4 +1,4 @@
-# testeRestSouthSystem
+# API REST para um CRUD
 
 O projeto é um desafio que visa desenvolver uma API REST para um CRUD utilizando Spring Boot, Hibernate e JPA.
 
